@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>Compiler</title>
+	<link rel="stylesheet" type="text/css" href="extra/codemirror.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="extra/theme/ambiance.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+	<style type='text/css'>
+	</style>
+</head>
+<body>
+
+<div id="wrap">
+	<div id="main">
+		<div id="code">
+			<textarea id="code-area">#include<stdio.h>
+#include <time.h>
+#include <unistd.h>
+
+int main() {
+  time_t t = time(0);
+  printf("Time counter!\n");
+  while(1)
+  {
+    printf("now: %.2f\n", (float)(time(0) - t));
+    sleep(1);
+  }
+  return 1;
+}
+</textarea>
+		</div>
+		<div id="console">
+			<div class="header"><button id="help-button">Help</button><button id="compile-button">Compile</button><button id="clear-button">Clear</button><button id="kill-button">Kill</button><button id="optimize-button">Optimize</button></div>
+			<div class="content">
+				<p class="msg">Console ready... press <span class='shortcut'>Ctrl+Enter</span> to compile code</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="help-info" style="display: none">
+	<p style="margin: 20px"><strong>CCompiler coded by Javi Agenjo @tamat (April 2014)</strong></p>
+	<p><strong>DESCRIPTION</strong></p>
+	<p>CCompiler is webapp that allows you to code in C++ inside the browser and see the execution result instantly.</p>
+	<p>Everytime you compile the code is sent to the server where is converted to ASM JS using emscripten.</p>
+	<p>The resulting code is retrieved and executed inside a WebWorker.</p>
+	<p><strong>HELP</strong></p>
+	<p>Ctrl + S - save the session</p>
+	<p>Ctrl + L - load last saved session</p>
+	<p><strong>CREDITS</strong></p>
+	<p><a href="http://codemirror.net/">CodeMirror</a> + <a  href="https://github.com/kripken/emscripten">Emscripten</a></p>
+	<p>More info about how is made can be found in <a href="http://www.tamats.com/blog/?p=593">my blog post</a>.</p>
+	<p style="margin-bottom: 20px"></p>
+</div>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="extra/codemirror.js"></script>
+<script type="text/javascript" src="extra/mode/clike/clike.js"></script>
+<script type="text/javascript" src="code.js"> </script>
+
+</body>
+</html>
